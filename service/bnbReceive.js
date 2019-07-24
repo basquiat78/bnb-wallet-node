@@ -29,6 +29,7 @@ function connectingWebSocket(){
         } else {
             logger.info('connected Binance Node WebSocket');
             logger.info("[Binance Node Listner Registration] -->  address : " + address);
+            // 토픽은 해당 주소로 입출금이 발생하는 transfers 이벤트 발생시 구독을 요청한다.
             ws.send(JSON.stringify( {method: "subscribe", topic: "transfers", address: address } ));
         }
     });
@@ -49,7 +50,6 @@ function connectingWebSocket(){
         logger.info("[Binance Node Listner Event] -->  address : " + address);
         if(data.error) {
         	logger.info(data.error);
-    	
     	// 밑에 이 조건은 해당 주소로 transaction이 In인 경우이다. 즉 이 주소로 코인이 들어왔을 경우에만 조건을 타게 한다.
         // 애초에 이것은 이 주소로 입금된 경우만 체크할 예정이기 때문이다.	
         } else if(data.stream === "transfers" && data.data.t[0].o === address ) {
