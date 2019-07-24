@@ -57,6 +57,34 @@ https://www.binance.vision/ko/tutorials/binance-dex-funding-your-testnet-account
 테스트를 위해서는 3개 정도의 계정을 생성하고 테스트용 코인을 받자.
 
 
+## Start    
+
+현재는 테스트넷에서만 테스트 진행을 했다.
+
+package.json에서
+
+```
+{
+  "name": "binance",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "set NODE_ENV=testnet&&node bnbWalletApi.js"
+  },
+  .
+  .
+  .
+}
+```
+
+mainnet에 사용한다면 testnet -> mainnet으로 바꿔서 실행시키면 된다.
+
+```
+$ npm start
+```
+
+
+
 ## NEXT
 
 거래소처럼 특정 시간마다 대표 입금 주소에서 콜드 월렛주소로 이동시키는 API 추가
