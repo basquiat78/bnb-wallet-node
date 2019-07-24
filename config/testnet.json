@@ -1,0 +1,17 @@
+{
+	"environment": "testnet",
+  
+	"bnbRestApiUrl" : "https://testnet-dex.binance.org",
+	"bnbWssUrl" : "wss://testnet-dex.binance.org/api/ws/",
+	"bnbPrefix" : "tbnb",
+	"bnbAsset" : "BNB",
+	"bnbNetwork" : "testnet",
+	"bnbFee" : 0.000375,
+  
+	"address" : "",
+	"privateKey" : "",
+
+	"logger" : { 
+					"path" : "c://logs/wallet-bnb" 
+			   }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "binance",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "set NODE_ENV=testnet&&node bnbWalletApi.js"
+  },
+  "dependencies": {
+    "babel-cli": "^6.0.0",
+    "babel-preset-es2015": "*",
+    "base-x": "^3.0.4",
+    "body-parser": "^1.18.1",
+    "config": "^1.30.0",
+    "cookie-parser": "^1.4.3",
+    "crypto": "^1.0.1",
+    "date-utils": "*",
+    "debug": "^2.6.8",
+    "decamelize": "^2.0.0",
+    "express": "^4.15.4",
+    "morgan": "^1.8.2",
+    "request": "*",
+    "sequelize": "^4.8.3",
+    "serve-favicon": "^2.4.4",
+    "winston": "^3.2.1",
+    "winston-daily-rotate-file": "^3.9.0",
+    "ws": "^5.1.1"
+  }
+}

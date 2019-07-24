@@ -1,0 +1,17 @@
+{
+	"environment": "mainnet",
+	
+	"bnbRestApiUrl" : "https://dex.binance.org",
+	"bnbWssUrl" : "wss://dex.binance.org/api/ws/",
+	"bnbPrefix" : "bnb",
+	"bnbAsset" : "BNB",
+	"bnbNetwork" : "mainnet",
+	"bnbFee" : 0.000375,
+	
+	"address" : "",
+	"privateKey" : "",
+	
+	"logger" : { 
+					"path" : "c://logs/wallet-bnb" 
+			    }
+}
