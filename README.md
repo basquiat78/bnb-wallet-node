@@ -55,3 +55,8 @@ https://www.binance.vision/ko/tutorials/binance-dex-funding-your-testnet-account
 위에서 생성한 주소를 입력하면 해당 주소로 200BNB를 준다.   
 
 테스트를 위해서는 3개 정도의 계정을 생성하고 테스트용 코인을 받자.
+
+
+## NEXT
+
+거래소처럼 특정 시간마다 대표 입금 주소에서 콜드 월렛주소로 이동시키는 API 추가
