@@ -1,5 +1,6 @@
 const config = require('config');
 const logger = require('../utils/logger').logger;//로깅
+const _ = require('lodash');
 
 let axios = require('axios');
 let bnbWssUrl = config.get("bnbWssUrl");
@@ -54,12 +55,13 @@ function connectingWebSocket(){
         // 애초에 이것은 이 주소로 입금된 경우만 체크할 예정이기 때문이다.	
         } else if(data.stream === "transfers" && data.data.t[0].o === address ) {
         	let txHash = data.data.H;
-        	let getURL = `${bnbRestApiUrl}/api/v1/tx/${txHash}?format=json`;
+        	// 이 API는 24시간동안 벌어진 해당 주소의 트랜잭션 정보들을 보여준다.
+        	let getURL = `${bnbRestApiUrl}/api/v1/transactions?address=${address}`;
             setTimeout(function(){
                 httpClient.get(getURL).then((res) => {
-                    doEvent(res.data);
+                    doEvent(res.data, txHash);
                 })
-            },5000);
+            },15000);
         }
     });
 }
@@ -69,9 +71,10 @@ function connectingWebSocket(){
  * @param transaction
  * @returns
  */
-function doEvent(transaction) {
-    logger.info("Transaction Data : " + JSON.stringify(transaction));
-    logger.info("Memo 정보 : " + transaction.tx.value.memo);
+function doEvent(transactions, txHash) {
+    //넘어온 트랙잰션 리스트에서 해당 txHash에 해당하는 정보를 가져온다.
+    let transaction = _.filter(transactions.tx, { 'txHash': txHash });
+    logger.info("Transaction Data : " + JSON.stringify(transaction[0]));
 }
 
 connectingWebSocket();
