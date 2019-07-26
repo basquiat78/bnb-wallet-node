@@ -22,18 +22,17 @@ let checkBnbAddress = require('../utils/checkBnbAddress');
 /**
  * bnb 주소 유효성 체크
  **/
-router.get('/address/check/:address', function (req, res, next) {
+router.get('/address/check/:address', (req, res, next) => {
 	let checkAddress = req.params.address;
 	logger.info("[Binance Address Validation Check] START -> check address is " + checkAddress);
 	
-	if (checkBnbAddress.isValidAddress(checkAddress)) {
+	if(checkBnbAddress.isValidAddress(checkAddress)) {
 		logger.info("[Binance Address Validation Check] Success");
 		res.send({
 			resultCode: "OK",
 			message: "Valid Address."
 		});
-	}
-	else {
+	} else {
 		logger.info("[Binance Address Validation Check] Invalid Address -> " + checkAddress);
 		res.send({
 			resultCode: "FAIL",
@@ -45,7 +44,7 @@ router.get('/address/check/:address', function (req, res, next) {
 /**
  *  BNB 지갑 주소 생성
  **/
-router.get('/address/create', function (req, res, next) {
+router.get('/address/create', (req, res, next) => {
 
 	logger.info("[Create Address] START");
 
@@ -69,7 +68,7 @@ router.get('/address/create', function (req, res, next) {
 /**
  *  바이낸스 코인 출금 지갑 발란스 조회 API
  **/
-router.get('/address/balance',  function  (req, res, next) {
+router.get('/address/balance', (req, res, next) => {
 	logger.info("[Inquire Address Balance] START : address --> " + address);
 	bnbClient.getBalance(address).then(info => {
 													let result = _.filter(info, { 'symbol': asset });
@@ -92,7 +91,7 @@ router.get('/address/balance',  function  (req, res, next) {
 /**
  *  바이낸스 코인 출금
  **/
-router.post('/withdraw', function (req, res, next) {
+router.post('/withdraw', (req, res, next) => {
 	let requestData = req.body;
 
 	logger.info("[Withdraw Binance Coin] --> START");
@@ -115,7 +114,7 @@ router.post('/withdraw', function (req, res, next) {
         const sequence = info.result.sequence || 0 ;
         return bnbClient.transfer(address, toAddress, amount, asset, memo, sequence) ;
     }).then((result) => {
-        if (result.status === 200) {
+        if(result.status === 200) {
         	logger.info("[Withdraw Binance Coin] Transfer Result Data : " + JSON.stringify(result));
         	logger.info("[Withdraw Binance Coin] Success");
         	res.send({
