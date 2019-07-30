@@ -23,7 +23,7 @@ function connectingWebSocket(){
 	ws.on('open', (error) => {
     	// 에러 발생시 5초후에 다시 연결 시도 
 		if(error) {
-            setInterval(function(){
+            setTimeout(function(){
             	connectingWebSocket();
             },5000);
             return;
@@ -38,7 +38,7 @@ function connectingWebSocket(){
 	// WebSocket close
     ws.on('close', (error) => {
         if(error) {
-            setInterval(function(){
+            setTimeout(function(){
             	connectingWebSocket();
             },5000);
             return;
