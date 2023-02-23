@@ -19,7 +19,7 @@
     "express": "^4.15.4",
     "morgan": "^1.8.2",
     "request": "*",
-    "sequelize": "^5.22.5",
+    "sequelize": "^6.28.2",
     "serve-favicon": "^2.4.4",
     "winston": "^3.2.1",
     "winston-daily-rotate-file": "^3.9.0",
